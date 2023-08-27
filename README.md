@@ -1,5 +1,26 @@
 # geocoder-cache
-Geocoder and reverse geocoder service. Can call existing services in backend, and caches results.
+This is the source code for a geocoder and reverse geocoder service, with caching.
+
+- Provides a REST API
+- Abstracts away the differences between external geocoding services
+- Caches results, to avoid hitting the external services too often
+- Caching is configurable. Currently two caching methods are supported:
+  - In-memory cache (very fast, but limited in size)
+  - DynamoDB cache (slower, but unlimited size, and can be shared between multiple instances)
+- Platform-independent
+- Can be used as a standalone service, or as a library
+- Can be used as a proxy for the Google Maps API, to avoid having to expose your API key
+
+![Overview](docs/overview.svg)
+
+## Why use this?
+- You want to use multiple geocoding services, but don't want to deal with the differences between them
+- You want to cache results, to avoid hitting the external services too often
+  - Calling services like Google Maps too often with the same requests leads to unnecessary costs
+- You want to use the Google Maps API, but don't want to expose your API key to the client
+  - This service can be used as a proxy for the Google Maps API, so the client doesn't need to know your API key
+- You don't want to be locked in to a specific geocoding service
+  - This service can be used as a proxy for multiple geocoding services, so you can easily switch between them
 
 ## Getting started
 ### Pre-requisites
